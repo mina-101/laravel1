@@ -14,7 +14,8 @@ class ExampleController extends Controller
      */
     public function index()
     {
-        //
+        $examples = Example::orderBy('id', 'desc')->get();
+        return view('layouts.example.list' , compact('examples'));
     }
 
     /**
@@ -24,7 +25,7 @@ class ExampleController extends Controller
      */
     public function create()
     {
-        //
+        return view('layouts.example.create');
     }
 
     /**
@@ -35,7 +36,11 @@ class ExampleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $date = $request->validate([
+            'title' => ['required','string']
+        ]);
+        Example::create($date);
+        return redirect(route('example.index'));
     }
 
     /**
