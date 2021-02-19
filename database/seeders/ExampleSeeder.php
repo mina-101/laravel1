@@ -4,18 +4,17 @@ namespace Database\Seeders;
 
 use App\Models\Example;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-class DatabaseSeeder extends Seeder
+class ExampleSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-
-        // \App\Models\User::factory(10)->create();
-        Example::factory(10)->create();
+        Example::factory()->count(10);
     }
 }
